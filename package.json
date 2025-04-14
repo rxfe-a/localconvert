@@ -1,0 +1,20 @@
+{
+  "name": "localconvert",
+  "version": "1.0.0",
+  "description": "An opensource alternative to cloud conversion tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rxfe-a/localconvert.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rxfe-a/localconvert/issues"
+  },
+  "homepage": "https://github.com/rxfe-a/localconvert#readme"
+}

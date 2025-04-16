@@ -2,9 +2,10 @@
   "name": "localconvert",
   "version": "1.0.0",
   "description": "An opensource alternative to cloud conversion tools",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/rxfe-a/localconvert/issues"
   },
-  "homepage": "https://github.com/rxfe-a/localconvert#readme"
+  "homepage": "https://github.com/rxfe-a/localconvert#readme",
+  "dependencies": {
+    "electron": "^35.1.5",
+    "sharp": "^0.34.1"
+  }
 }

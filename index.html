@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>localconvert dev window</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>localconvert 1.0</h1>
+
+  <input type="text" id="filePath" placeholder="Choose an image" readonly />
+  <button id="chooseFile">Browse...</button>
+
+  <div>
+    <label for="format">Convert to:</label>
+    <select id="format">
+      <option value="jpeg">JPEG</option>
+      <option value="png">PNG</option>
+      <option value="webp">WebP</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="quality">Quality (1–100):</label>
+    <input type="number" id="quality" value="80" min="1" max="100" />
+  </div>
+
+  <div>
+    <input type="checkbox" id="metadata" />
+    <label for="metadata">Remove Metadata</label>
+  </div>
+
+  <button id="convert">Convert</button>
+</body>
+</html>

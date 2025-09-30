@@ -1,13 +1,57 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>LocalConvert</title>
-    <meta charSet="UTF-8"/>
-    <link rel="stylesheet" href="static_assets/main.css"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="UTF-8" />
+  <title>Audio Converter</title>
 </head>
 <body>
-    <nav class="topbar">
-        <h1>localconvert</h1>
-    </nav>
+  <h1>localconvert v1</h1>
+  <form id="uploadForm">
+    <input type="file" name="file" accept="audio/*" required />
+    <br />
+    <label for="format">Convert to:</label>
+    <select name="format" id="format" required>
+      <option value="mp3">MP3</option>
+      <option value="wav">WAV</option>
+      <option value="ogg">OGG</option>
+      <option value="flac">FLAC</option>
+      <option value="aac">AAC</option>
+    </select>
+    <br />
+    <button type="submit">Convert</button>
+  </form>
+
+  <p id="status"></p>
+
+  <script>
+    const form = document.getElementById('uploadForm');
+    const status = document.getElementById('status');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.textContent = 'Uploading & converting...';
+
+      const formData = new FormData(form);
+
+      const res = await fetch('/convert', {
+        method: 'POST',
+        body: formData
+      });
+
+      if (!res.ok) {
+        status.textContent = 'Error: conversion failed!';
+        return;
+      }
+      const blob = await res.blob();
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      const filename = res.headers.get('Content-Disposition')?.match(/filename="(.+)"/)?.[1] || 'converted';
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      status.textContent = 'completed';
+    });
+  </script>
 </body>
 </html>
